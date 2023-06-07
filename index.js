@@ -4,8 +4,7 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 
-const hostname = '127.0.0.1'
-const port = process.env.PORT
+const port = 4000
 
 mongoose.connect('mongodb+srv://thomasstibling:root@api.z6z9txp.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -13,28 +12,21 @@ mongoose.connect('mongodb+srv://thomasstibling:root@api.z6z9txp.mongodb.net/?ret
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-// import des routes depuis ./routes/
-const billsRoutes = require('./routes/bills')
+const alimentRoutes = require('./routes/aliments')
 
 const app = express()
 
-// permet de transformer le body de la requête en json automatiquement
 app.use(express.json())
 
-// attention, l'ordre est important
-// d'abord on vérifie la sécurité avec cors
 app.use(cors({
   origin: 'http://localhost:5173'
 }))
 
-// configure les routes
-app.use('/bills', billsRoutes)
-app.use('/customers', customersRoutes)
+app.use('/aliments', alimentRoutes)
 
-// route principale
 app.get('/', (req, res) => {
   res.json({
-    api: 'bills app api',
+    api: 'eat cool api',
     version: process.env.VERSION
   })
 })
