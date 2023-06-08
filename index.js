@@ -14,6 +14,7 @@ mongoose.connect('mongodb+srv://thomasstibling:root@api.z6z9txp.mongodb.net/?ret
 
 const alimentRoutes = require('./routes/aliments')
 const userRoutes = require('./routes/users')
+const planningRoutes = require('./routes/plannings')
 
 const app = express()
 
@@ -25,6 +26,7 @@ app.use(cors({
 
 app.use('/aliments', alimentRoutes)
 app.use('/users', userRoutes)
+app.use('/plannings', planningRoutes)
 
 app.get('/', (req, res) => {
   res.json({
