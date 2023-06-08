@@ -16,6 +16,18 @@ const getItem = (req, res)=> {
   }).catch(error => res.status(400).json({ error }))
 }
 
+const getItemPerDayForUser = (req, res)=> {
+  const user = req.params.user
+  const date = req.params.date
+  console.log(req.foo)
+  Planning.findOne({
+    user: user,
+    date: date
+  }).then((planning)=>{
+    res.status(200).json(planning)
+  }).catch(error => res.status(400).json({ error }))
+}
+
 const patchItem = (req, res)=> {
   const id = req.params.id
   const updatedPlanning = req.body
@@ -45,4 +57,4 @@ const deleteItem = (req, res)=> {
   }).catch(error => res.status(400).json({ error }))
 }
 
-module.exports = { getItems, getItem, patchItem, postItem, deleteItem }
+module.exports = { getItems, getItem, patchItem, postItem, deleteItem, getItemPerDayForUser }

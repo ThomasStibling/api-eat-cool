@@ -7,6 +7,8 @@ router.get('/', ctrl.getItems)
 
 router.get('/:id', ctrl.getItem)
 
+router.get('/:user/:date', ctrl.getItemPerDayForUser)
+
 router.post('/', ctrl.postItem)
 
 router.patch('/:id', ctrl.patchItem)
