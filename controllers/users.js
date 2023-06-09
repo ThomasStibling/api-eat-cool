@@ -34,7 +34,8 @@ const loginUser = (req, res)=> {
         if (isPasswordValid) {
           console.log("Connecté")
           const token = jwt.sign({ userId: user._id }, 'votre_clé_secrète');
-          res.status(200).json({ token });
+          const userId = user._id;
+          res.status(200).json({ token, userId });
         }else{
           return res.status(401).json({ message: 'Identifiants invalides' })
         }
