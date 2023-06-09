@@ -9,7 +9,7 @@ router.get('/:id', ctrl.getItem)
 
 router.post('/', ctrl.postItem)
 
-router.patch('/:id', ctrl.patchItem)
+router.put('/:id', ctrl.patchItem)
 
 router.delete('/:id', ctrl.deleteItem)
 

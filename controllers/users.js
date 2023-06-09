@@ -51,6 +51,16 @@ const getAllUser = (req, res)=> {
   }).catch(error => res.status(400).json({ error }))
 }
 
+const deleteUser = (req, res)=> {
+  const id = req.params.id
+  User.deleteOne({
+    _id: id
+  }).then(()=>{
+    res.sendStatus(204)
+  }).catch(error => res.status(400).json({ error }))
+}
 
 
-module.exports = { createUser, loginUser, getAllUser}
+
+
+module.exports = { createUser, loginUser, getAllUser, deleteUser}
