@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 
 const port = 4000
 
-mongoose.connect('mongodb+srv://thomasstibling:root@api.z6z9txp.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('your_connection_string_availible_on_mongo_atlas',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
